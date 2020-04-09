@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        tools:ignore="UselessLeaf">
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/project_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:background="@color/colorCard"
+            android:paddingStart="@dimen/dp_4"
+            android:paddingEnd="@dimen/dp_4"
+            app:tl_indicator_color="@color/light_red"
+            app:tl_textSelectColor="@color/white"
+            app:tl_textUnselectColor="@color/grey"
+            app:tl_divider_color="@color/light_red"
+            app:tl_divider_width="@dimen/dp_1"
+            app:tl_divider_padding="@dimen/dp_8"
+            app:tl_indicator_corner_radius="@dimen/dp_4"
+            app:tl_indicator_style="BLOCK"/>
+
+        <View
+            android:id="@+id/project_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/comment_line" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/project_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_article_common_group"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_8"
+    android:layout_marginTop="@dimen/dp_4"
+    android:layout_marginEnd="@dimen/dp_8"
+    android:layout_marginBottom="@dimen/dp_4"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/colorCard"
+    app:cardCornerRadius="@dimen/dp_4"
+    app:cardElevation="@dimen/dp_2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_4">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_4">
+
+            <TextView
+                android:id="@+id/item_article_common_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableStart="@mipmap/icon_author"
+                android:drawablePadding="@dimen/dp_4"
+                android:gravity="center"
+                android:padding="@dimen/dp_4"
+                android:textColor="@color/comment_text"
+                tools:text="author" />
+
+            <TextView
+                android:id="@+id/item_article_common_niceDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:drawableStart="@drawable/ic_time"
+                android:drawablePadding="@dimen/dp_4"
+                android:gravity="center"
+                android:padding="@dimen/dp_4"
+                android:textColor="@color/comment_text"
+                tools:text="14小时之前" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_article_common_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_4"
+            android:gravity="center"
+            android:textColor="@color/comment_text"
+            android:textSize="@dimen/sp_16"
+            tools:text="Android Handler: 手把手带你深入分析Handler机制源码" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:gravity="center_vertical"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/item_article_common_chapterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:padding="@dimen/dp_4"
+                android:textColor="@color/colorPrimaryOverlay"
+                tools:text="四大组件/handler" />
+
+            <TextView
+                android:id="@+id/item_article_common_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:layout_toStartOf="@+id/item_article_common_tag"
+                android:background="@drawable/shape_tag_red_background"
+                android:gravity="center"
+                android:padding="@dimen/dp_2"
+                android:text="@string/item_article_top"
+                android:textColor="@color/light_red"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/item_article_common_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:layout_toStartOf="@+id/item_article_common_collect"
+                android:background="@drawable/shape_tag_red_background"
+                android:gravity="center"
+                android:padding="@dimen/dp_2"
+                android:text="@string/item_article_new"
+                android:textColor="@color/light_red"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/item_article_common_collect"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:src="@drawable/icon_like_article_not_selected" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

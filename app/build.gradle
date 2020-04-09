@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "com.bingo.wanandroid"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // ButterKnife requires Java 8.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //base
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'   //SnackBar
+//    implementation 'com.android.support:recyclerview-v7:28.0.0'   不用写
+//    implementation 'com.android.support:cardview-v7:28.0.0'   不用写
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //ui RecyclerView相关 
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0' //下拉刷新,上拉加载,支持头部、尾部动画
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34' //数据适配器,支持添加头部View
+    implementation 'com.youth.banner:banner:1.4.10'  //广告栏
+    implementation 'q.rorbin:VerticalTabLayout:1.2.5'  //垂直竖向tab
+    implementation 'com.hyman:flowlayout-lib:1.1.2'    //流式布局
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar' //Android TabLayout库
+
+    //image库 Glide
+    implementation 'com.github.bumptech.glide:glide:4.0.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
+
+    //net库 Gson + OkHttp + Retrofit
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.okhttp3:okhttp:4.2.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    //net库 other  拦截器 + cookie
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.4.2'
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+
+    //rx库 RxJava + RxAndroid + RxPermissions
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+
+    //di库
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.google.dagger:dagger-android:2.15'
+    implementation 'com.google.dagger:dagger-android-support:2.15'
+    // if you use the support libraries
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+    implementation 'com.google.dagger:dagger:2.15'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
+    implementation 'org.glassfish:javax.annotation:10.0-b28'
+
+    //other库
+    // To get SwipeBack feature, rely on both fragmentation & fragmentation-swipeback
+    implementation 'me.yokeyword:fragmentation:1.3.8'
+    // Swipeback is based on fragmentation. Refer to SwipeBackActivity/Fragment for your Customized SupportActivity/Fragment
+    implementation 'me.yokeyword:fragmentation-swipeback:1.3.8'
+    //WebView
+    implementation 'com.just.agentweb:agentweb:4.1.2'
+
+    //implementation 'com.afollestad.material-dialogs:core:3.3.0'
+}
