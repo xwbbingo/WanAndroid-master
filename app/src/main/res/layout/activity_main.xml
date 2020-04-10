@@ -41,7 +41,9 @@
                 android:id="@+id/main_floating_action_btn"
                 style="@style/style_float_btn"
                 android:layout_marginEnd="@dimen/dp_16"
-                android:backgroundTint="@color/colorPrimary"
+                app:fabSize="normal"
+                app:elevation="@dimen/dp_0"
+                app:backgroundTint="@color/colorPrimary"
                 android:src="@mipmap/icon_up_arrow" />
 
         </android.support.design.widget.CoordinatorLayout>

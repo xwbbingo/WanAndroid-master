@@ -2,6 +2,8 @@ package com.bingo.wanandroid.utils;
 
 import android.graphics.Color;
 
+import com.bingo.wanandroid.app.Constants;
+
 import java.util.Random;
 
 /**
@@ -22,5 +24,14 @@ public class ColorUtil {
         int blue =random.nextInt(150);
         //使用rgb混合生成一种新的颜色,Color.rgb生成的是一个int数
         return Color.rgb(red,green, blue);
+    }
+
+    public static int randomTagColor() {
+        int randomNum = new Random().nextInt();
+        int position = randomNum % Constants.TAB_COLORS.length;
+        if (position < 0) {
+            position = -position;
+        }
+        return Constants.TAB_COLORS[position];
     }
 }

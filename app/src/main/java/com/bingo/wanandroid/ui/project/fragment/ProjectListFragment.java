@@ -11,7 +11,7 @@ import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.base.fragment.BaseFragment;
 import com.bingo.wanandroid.component.JudgeUtils;
-import com.bingo.wanandroid.contract.project.ProjectListContact;
+import com.bingo.wanandroid.contract.project.ProjectListContract;
 import com.bingo.wanandroid.core.bean.mainpager.article.FeedArticleData;
 import com.bingo.wanandroid.core.bean.project.ProjectListData;
 import com.bingo.wanandroid.presenter.project.ProjectListPresenter;
@@ -27,7 +27,7 @@ import butterknife.BindView;
  * author bingo
  * date 2020/1/21
  */
-public class ProjectListFragment extends BaseFragment<ProjectListPresenter> implements ProjectListContact.View {
+public class ProjectListFragment extends BaseFragment<ProjectListPresenter> implements ProjectListContract.View {
 
 
     @BindView(R.id.project_list_recycler_view)

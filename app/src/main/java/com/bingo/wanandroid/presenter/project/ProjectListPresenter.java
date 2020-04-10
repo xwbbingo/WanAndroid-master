@@ -7,7 +7,7 @@ import com.bingo.wanandroid.app.WanAndroidApp;
 import com.bingo.wanandroid.base.presenter.BasePresenter;
 import com.bingo.wanandroid.component.BaseObserver;
 import com.bingo.wanandroid.component.RxUtils;
-import com.bingo.wanandroid.contract.project.ProjectListContact;
+import com.bingo.wanandroid.contract.project.ProjectListContract;
 import com.bingo.wanandroid.core.DataManager;
 import com.bingo.wanandroid.core.bean.project.ProjectListData;
 
@@ -17,7 +17,7 @@ import javax.inject.Inject;
  * author bingo
  * date 2020/2/3
  */
-public class ProjectListPresenter extends BasePresenter<ProjectListContact.View> implements ProjectListContact.Presenter {
+public class ProjectListPresenter extends BasePresenter<ProjectListContract.View> implements ProjectListContract.Presenter {
 
     private int mCurrentPage = 1; //拼接页,从1开始
     private boolean isRefresh = true;
@@ -28,7 +28,7 @@ public class ProjectListPresenter extends BasePresenter<ProjectListContact.View>
     }
 
     @Override
-    public void attachView(ProjectListContact.View view) {
+    public void attachView(ProjectListContract.View view) {
         super.attachView(view);
     }
 

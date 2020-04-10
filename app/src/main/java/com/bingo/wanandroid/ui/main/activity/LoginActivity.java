@@ -2,32 +2,24 @@ package com.bingo.wanandroid.ui.main.activity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.base.activity.BaseActivity;
-import com.bingo.wanandroid.contract.main.LoginContact;
+import com.bingo.wanandroid.contract.main.LoginContract;
 import com.bingo.wanandroid.presenter.main.LoginPresenter;
-import com.bingo.wanandroid.utils.CommonUtil;
-import com.bingo.wanandroid.utils.StatusBarUtil;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * author bingo
  * date 2020/1/14
  */
-public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContact.View {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
 
     @BindView(R.id.login_toolbar)
     Toolbar mLoginToolbar;

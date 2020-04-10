@@ -125,7 +125,7 @@ public class RxUtils {
                     @Override
                     public Observable<T> apply(BaseResponse<T> tBaseResponse) throws Exception {
                         if(tBaseResponse.getErrorCode() == BaseResponse.SUCCESS
-                                && tBaseResponse.getData() != null
+                                //&& tBaseResponse.getData() != null
                                 && NetWorkUtil.isNetworkConnected()) {
                             //创建一个非空数据源，避免onNext()传入null
                             return createData(CommonUtil.cast(new LoginData()));

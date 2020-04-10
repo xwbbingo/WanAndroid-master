@@ -1,5 +1,7 @@
 package com.bingo.wanandroid.app;
 
+import android.graphics.Color;
+
 import com.bingo.wanandroid.R;
 
 import java.io.File;
@@ -83,4 +85,17 @@ public class Constants {
     public static final long CLICK_TIME_AREA = 1000;
 
     public static final long DOUBLE_INTERVAL_TIME = 2000;
+
+    /**
+     * Tab colors
+     */
+    public static final int[] TAB_COLORS = new int[]{
+            Color.parseColor("#90C5F0"),
+            Color.parseColor("#91CED5"),
+            Color.parseColor("#F88F55"),
+            Color.parseColor("#C0AFD0"),
+            Color.parseColor("#E78F8F"),
+            Color.parseColor("#67CCB7"),
+            Color.parseColor("#F6BC7E")
+    };
 }

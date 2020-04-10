@@ -9,7 +9,7 @@ import com.bingo.wanandroid.core.bean.project.ProjectListData;
  * author bingo
  * date 2020/1/17
  */
-public interface HierarchyDetailListContact {
+public interface HierarchyDetailListContract {
 
     interface View extends AbstractView{
         /**

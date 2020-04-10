@@ -5,10 +5,8 @@ import com.bingo.wanandroid.app.WanAndroidApp;
 import com.bingo.wanandroid.base.presenter.BasePresenter;
 import com.bingo.wanandroid.component.BaseObserver;
 import com.bingo.wanandroid.component.RxUtils;
-import com.bingo.wanandroid.contract.navigation.NavigationContact;
-import com.bingo.wanandroid.contract.project.ProjectContact;
+import com.bingo.wanandroid.contract.project.ProjectContract;
 import com.bingo.wanandroid.core.DataManager;
-import com.bingo.wanandroid.core.bean.navigation.NavigationData;
 import com.bingo.wanandroid.core.bean.project.ProjectClassifyData;
 
 import java.util.List;
@@ -19,7 +17,7 @@ import javax.inject.Inject;
  * author bingo
  * date 2020/1/21
  */
-public class ProjectPresenter extends BasePresenter<ProjectContact.View> implements ProjectContact.Presenter {
+public class ProjectPresenter extends BasePresenter<ProjectContract.View> implements ProjectContract.Presenter {
 
     @Inject
     public ProjectPresenter(DataManager dataManager) {

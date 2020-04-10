@@ -1,6 +1,5 @@
 package com.bingo.wanandroid.ui.hierarchy.activity;
 
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -8,14 +7,13 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.base.activity.BaseActivity;
 import com.bingo.wanandroid.base.fragment.BaseFragment;
-import com.bingo.wanandroid.contract.hierarchy.HierarchyDetailContact;
+import com.bingo.wanandroid.contract.hierarchy.HierarchyDetailContract;
 import com.bingo.wanandroid.core.bean.hierarchy.HierarchyData;
 import com.bingo.wanandroid.presenter.hierarchy.HierarchyDetailPresenter;
 import com.bingo.wanandroid.ui.hierarchy.fragment.HierarchyDetailListFragment;
@@ -25,14 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * author bingo
  * date 2020/2/6
  */
-public class HierarchyDetailActivity extends BaseActivity<HierarchyDetailPresenter> implements HierarchyDetailContact.View {
+public class HierarchyDetailActivity extends BaseActivity<HierarchyDetailPresenter> implements HierarchyDetailContract.View {
 
     @BindView(R.id.common_toolbar_title_tv)
     TextView mCommonToolbarTitleTv;

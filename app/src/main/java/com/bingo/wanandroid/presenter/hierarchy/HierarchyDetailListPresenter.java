@@ -5,8 +5,7 @@ import com.bingo.wanandroid.app.WanAndroidApp;
 import com.bingo.wanandroid.base.presenter.BasePresenter;
 import com.bingo.wanandroid.component.BaseObserver;
 import com.bingo.wanandroid.component.RxUtils;
-import com.bingo.wanandroid.contract.hierarchy.HierarchyDetailContact;
-import com.bingo.wanandroid.contract.hierarchy.HierarchyDetailListContact;
+import com.bingo.wanandroid.contract.hierarchy.HierarchyDetailListContract;
 import com.bingo.wanandroid.core.DataManager;
 import com.bingo.wanandroid.core.bean.mainpager.article.FeedArticleListData;
 
@@ -16,8 +15,8 @@ import javax.inject.Inject;
  * author bingo
  * date 2020/1/17
  */
-public class HierarchyDetailListPresenter extends BasePresenter<HierarchyDetailListContact.View>
-        implements HierarchyDetailListContact.Presenter {
+public class HierarchyDetailListPresenter extends BasePresenter<HierarchyDetailListContract.View>
+        implements HierarchyDetailListContract.Presenter {
 
     private int mCurrentPage;
     private boolean isRefresh = true;
@@ -28,7 +27,7 @@ public class HierarchyDetailListPresenter extends BasePresenter<HierarchyDetailL
     }
 
     @Override
-    public void attachView(HierarchyDetailListContact.View view) {
+    public void attachView(HierarchyDetailListContract.View view) {
         super.attachView(view);
     }
 

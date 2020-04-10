@@ -5,36 +5,30 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.base.fragment.BaseFragment;
 import com.bingo.wanandroid.component.JudgeUtils;
-import com.bingo.wanandroid.contract.hierarchy.HierarchyDetailListContact;
+import com.bingo.wanandroid.contract.hierarchy.HierarchyDetailListContract;
 import com.bingo.wanandroid.core.bean.mainpager.article.FeedArticleData;
 import com.bingo.wanandroid.core.bean.mainpager.article.FeedArticleListData;
 import com.bingo.wanandroid.presenter.hierarchy.HierarchyDetailListPresenter;
 import com.bingo.wanandroid.ui.mainpager.adapter.FeedArticleAdapter;
-import com.bingo.wanandroid.ui.project.adapter.ProjectListAdapter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * author bingo
  * date 2020/1/21
  */
 public class HierarchyDetailListFragment extends BaseFragment<HierarchyDetailListPresenter>
-        implements HierarchyDetailListContact.View {
+        implements HierarchyDetailListContract.View {
 
     @BindView(R.id.refresh_layout)
     SmartRefreshLayout mRefreshLayout;
@@ -67,9 +61,7 @@ public class HierarchyDetailListFragment extends BaseFragment<HierarchyDetailLis
         mHierarchyDetailListRecyclerView.setHasFixedSize(true);
         mHierarchyDetailListRecyclerView.setAdapter(mFeedArticleAdapter);
 
-        mFeedArticleAdapter.setOnItemClickListener((adapter, view, position) -> {
-            startArticleDetailPager(view,position);
-        });
+        mFeedArticleAdapter.setOnItemClickListener((adapter, view, position) -> startArticleDetailPager(view,position));
 
         mFeedArticleAdapter.setOnItemChildClickListener(((adapter, view, position) -> {
             clickChildEvent(view,position);

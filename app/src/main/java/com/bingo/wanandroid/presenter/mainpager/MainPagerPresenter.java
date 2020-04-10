@@ -71,7 +71,7 @@ public class MainPagerPresenter extends BasePresenter<MainPagerContract.View> im
                         if (loginResponse.getErrorCode() == BaseResponse.SUCCESS) {
                             loginSuccess(loginResponse);
                         } else {
-                            mDataManager.setLoginStatus(false);
+                            setLoginStatus(false);
                             mView.showAutoLoginFail();
                         }
                         BaseResponse<List<BannerData>> bannerResponse = CommonUtil.cast(map.get(Constants.BANNER_DATA));

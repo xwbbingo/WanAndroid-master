@@ -42,7 +42,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <include
-            android:id="@+id/about_me_content"
+
             layout="@layout/include_content_about_me" />
     </android.support.v4.widget.NestedScrollView>
 
@@ -51,8 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_16"
-        android:backgroundTint="@color/colorPrimary"
-        android:elevation="@dimen/dp_0"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="@dimen/dp_0"
         android:src="@drawable/ic_launcher_round"
         app:fabSize="normal"
         app:layout_anchor="@id/about_me_app_bar"

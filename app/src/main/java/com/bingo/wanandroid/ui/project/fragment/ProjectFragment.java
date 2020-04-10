@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.base.fragment.BaseFragment;
-import com.bingo.wanandroid.contract.project.ProjectContact;
+import com.bingo.wanandroid.contract.project.ProjectContract;
 import com.bingo.wanandroid.core.bean.project.ProjectClassifyData;
 import com.bingo.wanandroid.presenter.project.ProjectPresenter;
 import com.flyco.tablayout.SlidingTabLayout;
@@ -25,7 +25,7 @@ import butterknife.BindView;
  * author bingo
  * date 2020/1/21
  */
-public class ProjectFragment extends BaseFragment<ProjectPresenter> implements ProjectContact.View {
+public class ProjectFragment extends BaseFragment<ProjectPresenter> implements ProjectContract.View {
 
     @BindView(R.id.project_tab_layout)
     SlidingTabLayout mProjectTabLayout;

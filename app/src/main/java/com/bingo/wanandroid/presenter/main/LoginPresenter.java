@@ -8,7 +8,7 @@ import com.bingo.wanandroid.base.presenter.BasePresenter;
 import com.bingo.wanandroid.component.BaseObserver;
 import com.bingo.wanandroid.component.RxBus;
 import com.bingo.wanandroid.component.RxUtils;
-import com.bingo.wanandroid.contract.main.LoginContact;
+import com.bingo.wanandroid.contract.main.LoginContract;
 import com.bingo.wanandroid.core.DataManager;
 import com.bingo.wanandroid.core.bean.main.login.LoginData;
 import com.bingo.wanandroid.core.event.LoginEvent;
@@ -19,7 +19,7 @@ import javax.inject.Inject;
  * author bingo
  * date 2020/1/9
  */
-public class LoginPresenter extends BasePresenter<LoginContact.View> implements LoginContact.Presenter {
+public class LoginPresenter extends BasePresenter<LoginContract.View> implements LoginContract.Presenter {
 
     @Inject
     public LoginPresenter(DataManager dataManager) {
@@ -49,7 +49,7 @@ public class LoginPresenter extends BasePresenter<LoginContact.View> implements 
     }
 
     @Override
-    public void attachView(LoginContact.View view) {
+    public void attachView(LoginContract.View view) {
         super.attachView(view);
     }
 }

@@ -10,13 +10,11 @@ import android.view.View;
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.base.fragment.BaseFragment;
-import com.bingo.wanandroid.contract.hierarchy.HierarchyContact;
-import com.bingo.wanandroid.contract.hierarchy.HierarchyDetailContact;
+import com.bingo.wanandroid.contract.hierarchy.HierarchyContract;
 import com.bingo.wanandroid.core.bean.hierarchy.HierarchyData;
 import com.bingo.wanandroid.presenter.hierarchy.HierarchyPresenter;
 import com.bingo.wanandroid.ui.hierarchy.activity.HierarchyDetailActivity;
 import com.bingo.wanandroid.ui.hierarchy.adapter.HierarchyAdapter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.ArrayList;
@@ -28,7 +26,7 @@ import butterknife.BindView;
  * author bingo
  * date 2020/1/17
  */
-public class HierarchyFragment extends BaseFragment<HierarchyPresenter> implements HierarchyContact.View {
+public class HierarchyFragment extends BaseFragment<HierarchyPresenter> implements HierarchyContract.View {
 
 
     @BindView(R.id.hierarchy_recycler_view)

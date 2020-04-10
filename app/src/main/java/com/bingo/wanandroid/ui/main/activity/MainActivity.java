@@ -70,6 +70,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     private MenuItem mMenuItem4;
     private MenuItem mMenuItem5;
 
+    private boolean mAboutType;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -195,7 +197,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             } else if (menuItem == mMenuItem3) { //设置
 
             } else if (menuItem == mMenuItem4) { //关于
-                startActivity(new Intent(this,AboutMeActivity.class));
+                mAboutType = !mAboutType;
+                startActivity(new Intent(this,mAboutType?AboutMeActivity.class:AboutUsActivity.class));
             } else if (menuItem == mMenuItem5) { //退出
                 mPresenter.logoutWanAndroid();
             }

@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.base.fragment.BaseFragment;
-import com.bingo.wanandroid.contract.navigation.NavigationContact;
+import com.bingo.wanandroid.contract.navigation.NavigationContract;
 import com.bingo.wanandroid.core.bean.navigation.NavigationData;
 import com.bingo.wanandroid.presenter.navigation.NavigationPresenter;
 import com.bingo.wanandroid.ui.navigation.adapter.NavigationAdapter;
@@ -30,7 +30,7 @@ import q.rorbin.verticaltablayout.widget.TabView;
  * author bingo
  * date 2020/1/21
  */
-public class NavigationFragment extends BaseFragment<NavigationPresenter> implements NavigationContact.View {
+public class NavigationFragment extends BaseFragment<NavigationPresenter> implements NavigationContract.View {
 
 
     @BindView(R.id.navigation_tab_layout)

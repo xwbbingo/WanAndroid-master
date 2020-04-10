@@ -61,7 +61,7 @@
             android:layout_height="match_parent" />
 
         <include
-            layout="@layout/include_content_about_me" />
+            layout="@layout/include_content_about_us" />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -71,6 +71,7 @@
         android:layout_margin="@dimen/dp_16"
         app:elevation="@dimen/dp_0"
         app:fabSize="normal"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@id/about_us_scroll"
         app:layout_anchorGravity="top" />
 
