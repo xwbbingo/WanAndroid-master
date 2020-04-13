@@ -7,6 +7,7 @@ import android.os.Build;
 
 import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.ui.main.activity.ArticleDetailActivity;
+import com.bingo.wanandroid.ui.main.activity.MainActivity;
 
 
 /**
@@ -25,5 +26,11 @@ public class JudgeUtils {
         } else {
             context.startActivity(intent);
         }
+    }
+
+    public static void startSearchListActivity(Context activity, String searchText) {
+        Intent intent = new Intent(activity, MainActivity.class);
+        intent.putExtra(Constants.SEARCH_TEXT,searchText);
+        activity.startActivity(intent);
     }
 }

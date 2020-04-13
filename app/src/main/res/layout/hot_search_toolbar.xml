@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hot_search_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_54"
+    android:background="@color/colorCard"
+    app:layout_scrollFlags="scroll|enterAlways"
+    app:navigationIcon="@drawable/ic_arrow_back_grey_24dp">
+
+    <TextView
+        android:id="@+id/hot_search_tv"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_36"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@drawable/search_bg"
+        android:contentDescription="@null"
+        android:gravity="center"
+        android:text="@string/action_search"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_12" />
+
+    <EditText
+        android:id="@+id/hot_search_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:drawableStart="@drawable/ic_search"
+        android:hint="@string/search_tint"
+        android:inputType="text"
+        android:paddingStart="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_8"
+        android:textColor="@color/title_black"
+        android:textColorHint="@color/grey"
+        android:textSize="@dimen/sp_14" />
+
+</android.support.v7.widget.Toolbar>

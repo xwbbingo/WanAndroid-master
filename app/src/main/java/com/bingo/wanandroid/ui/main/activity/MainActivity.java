@@ -25,6 +25,7 @@ import com.bingo.wanandroid.base.activity.BaseActivity;
 import com.bingo.wanandroid.contract.main.MainContract;
 import com.bingo.wanandroid.presenter.main.MainPresenter;
 import com.bingo.wanandroid.ui.hierarchy.fragment.HierarchyFragment;
+import com.bingo.wanandroid.ui.main.fragment.HotSearchDialogFragment;
 import com.bingo.wanandroid.ui.mainpager.fragment.MainPagerFragment;
 import com.bingo.wanandroid.ui.navigation.fragment.NavigationFragment;
 import com.bingo.wanandroid.ui.project.fragment.ProjectFragment;
@@ -71,6 +72,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     private MenuItem mMenuItem5;
 
     private boolean mAboutType;
+    private HotSearchDialogFragment mHotSearchDialogFragment;
 
     @Override
     protected int getLayoutId() {
@@ -280,6 +282,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 break;
             case R.id.action_search:
                 // TODO: 2020/4/7 热搜
+                if (mHotSearchDialogFragment ==null){
+                    mHotSearchDialogFragment = new HotSearchDialogFragment();
+                }
+                if (!isDestroyed() && mHotSearchDialogFragment.isAdded()){
+                    mHotSearchDialogFragment.dismiss();
+                }
+                mHotSearchDialogFragment.show(getSupportFragmentManager(),"HotSearchDialogFragment");
                 break;
             default:
                 break;

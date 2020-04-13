@@ -50,6 +50,8 @@ public class Constants {
      * Main Pager
      */
 
+    public static final String SEARCH_TEXT = "search_text";
+
     public static final String LOGIN_DATA = "login_data";
 
     public static final String BANNER_DATA = "banner_data";
