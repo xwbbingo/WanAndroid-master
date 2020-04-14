@@ -11,7 +11,6 @@ import com.bingo.wanandroid.utils.CommonUtil;
 
 import javax.inject.Inject;
 
-import butterknife.OnClick;
 import dagger.android.support.AndroidSupportInjection;
 
 /**
@@ -102,20 +101,20 @@ public abstract class BaseDialogFragment<T extends AbstractPresenter> extends Ab
     public void showErrorMsg(String errorMsg) {
         if (getActivity() == null)
             return;
-        CommonUtil.showSnackMessage(getActivity(),errorMsg);
+        CommonUtil.showSnackMessage(getActivity(), errorMsg);
     }
 
     @Override
     public void showToast(String message) {
         if (getActivity() == null)
             return;
-        CommonUtil.showMessage(getActivity(),message);
+        CommonUtil.showMessage(getActivity(), message);
     }
 
     @Override
     public void showSnackBar(String message) {
         if (getActivity() == null)
             return;
-        CommonUtil.showSnackMessage(getActivity(),message);
+        CommonUtil.showSnackMessage(getActivity(), message);
     }
 }

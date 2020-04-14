@@ -125,4 +125,9 @@ public class HierarchyDetailListFragment extends BaseFragment<HierarchyDetailLis
             }
         }
     }
+
+    public void jumpToTheTop() {
+        if (mHierarchyDetailListRecyclerView != null)
+            mHierarchyDetailListRecyclerView.smoothScrollToPosition(0);
+    }
 }

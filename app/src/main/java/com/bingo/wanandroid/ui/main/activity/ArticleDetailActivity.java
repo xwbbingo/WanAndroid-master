@@ -9,7 +9,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.app.Constants;
@@ -19,6 +18,7 @@ import com.bingo.wanandroid.presenter.main.ArticleDetailPresenter;
 import com.just.agentweb.AgentWeb;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * author bingo
@@ -27,12 +27,10 @@ import butterknife.BindView;
 public class ArticleDetailActivity extends BaseActivity<ArticleDetailPresenter>
         implements ArticleDetailContract.View {
 
-    @BindView(R.id.common_toolbar_title_tv)
-    TextView mCommonToolbarTitleTv;
-    @BindView(R.id.common_toolbar)
-    Toolbar mCommonToolbar;
     @BindView(R.id.article_detail_web_view)
     FrameLayout mArticleDetailWebView;
+    @BindView(R.id.article_detail_toolbar)
+    Toolbar mArticleDetailToolbar;
 
 
     private AgentWeb mAgentWeb;
@@ -49,13 +47,13 @@ public class ArticleDetailActivity extends BaseActivity<ArticleDetailPresenter>
     @Override
     protected void initToolbar() {
         getBundleData();
-        mCommonToolbarTitleTv.setText(Html.fromHtml(mTitle));
-        setSupportActionBar(mCommonToolbar);
+        mArticleDetailToolbar.setTitle(Html.fromHtml(mTitle));
+        setSupportActionBar(mArticleDetailToolbar);
 //        ActionBar actionBar = getSupportActionBar();
 //        assert actionBar != null;
 //        actionBar.setDisplayShowTitleEnabled(false);
         //StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this,R.color.blue_dark_btn),1f);
-        mCommonToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
+        mArticleDetailToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
     }
 
     private void getBundleData() {
@@ -82,13 +80,13 @@ public class ArticleDetailActivity extends BaseActivity<ArticleDetailPresenter>
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu_article_detail,menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu_article_detail, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(mAgentWeb.handleKeyEvent(keyCode, event))
+        if (mAgentWeb.handleKeyEvent(keyCode, event))
             return true;
         return super.onKeyDown(keyCode, event);
     }

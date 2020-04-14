@@ -11,7 +11,15 @@
         android:fitsSystemWindows="false"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="@dimen/dp_0">
-        <include layout="@layout/common_toolbar" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/article_detail_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_54"
+            android:background="@drawable/blue_gradient_bg"
+            app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+            app:layout_scrollFlags="scroll|enterAlways">
+        </android.support.v7.widget.Toolbar>
+
     </android.support.design.widget.AppBarLayout>
 
     <FrameLayout

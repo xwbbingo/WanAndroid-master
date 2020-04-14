@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.bingo.wanandroid.ui.mainpager.fragment.MainPagerFragment;
 import com.bingo.wanandroid.ui.navigation.fragment.NavigationFragment;
 import com.bingo.wanandroid.ui.project.fragment.ProjectFragment;
 import com.bingo.wanandroid.utils.StatusBarUtil;
+import com.bingo.wanandroid.widget.CommonAlertDialog;
 
 import java.util.ArrayList;
 
@@ -81,6 +83,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected void initToolbar() {
+        Log.i("test","10");
         setSupportActionBar(mCommonToolbar);
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -92,12 +95,14 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected void initEventAndData() {
-
+        Log.i("test","9");
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.i("test","6");
         super.onCreate(savedInstanceState);
+        Log.i("test","7");
         mFragments = new ArrayList<>();
         if (savedInstanceState == null) {
             initPager(false, Constants.TYPE_MAIN_PAGER);
@@ -195,17 +200,31 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             if (menuItem == mMenuItem1) { // 主页
                 startMainPager();
             } else if (menuItem == mMenuItem2) { //收藏
-
+                showSnackBar("功能待开发中...");
             } else if (menuItem == mMenuItem3) { //设置
-
+                showSnackBar("功能待开发中...");
             } else if (menuItem == mMenuItem4) { //关于
                 mAboutType = !mAboutType;
                 startActivity(new Intent(this,mAboutType?AboutMeActivity.class:AboutUsActivity.class));
             } else if (menuItem == mMenuItem5) { //退出
-                mPresenter.logoutWanAndroid();
+                logout();
             }
             return true;
         });
+    }
+
+    /**/
+
+    private void logout() {
+        CommonAlertDialog.newInstance().showDialog(this,
+                getString(R.string.logout_tint),
+                getString(R.string.ok),
+                getString(R.string.no),
+                v -> {
+                    mPresenter.logoutWanAndroid();
+                }, v -> {
+                    CommonAlertDialog.newInstance().cancelDialog(true);
+                });
     }
 
     private void startMainPager() {
@@ -262,6 +281,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mLastFgIndex = position;
         ft.hide(lastFg);
         if (!targetFg.isAdded()) {
+            //getSupportFragmentManager().beginTransaction().remove(targetFg).commitAllowingStateLoss();
             ft.add(R.id.fragment_group, targetFg);
         }
         ft.show(targetFg);
@@ -343,6 +363,25 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     private void jumpToTheTop() {
-
+        switch (mPresenter.getCurrentPage()){
+            case Constants.TYPE_MAIN_PAGER:
+                if (mMainPagerFragment != null)
+                    mMainPagerFragment.jumpToTheTop();
+                break;
+            case Constants.TYPE_KNOWLEDGE:
+                if (mHierarchyFragment != null)
+                    mHierarchyFragment.jumpToTheTop();
+                break;
+            case Constants.TYPE_NAVIGATION:
+                if (mNavigationFragment != null)
+                    mNavigationFragment.jumpToTheTop();
+                break;
+            case Constants.TYPE_PROJECT:
+                if (mProjectFragment != null)
+                    mProjectFragment.jumpToTheTop();
+                break;
+            default:
+                break;
+        }
     }
 }

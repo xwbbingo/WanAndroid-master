@@ -74,4 +74,5 @@ public interface AbstractView {
      * @param message Message
      */
     void showSnackBar(String message);
+
 }

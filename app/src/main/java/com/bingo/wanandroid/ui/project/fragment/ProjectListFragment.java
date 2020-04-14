@@ -1,9 +1,12 @@
 package com.bingo.wanandroid.ui.project.fragment;
 
 import android.app.ActivityOptions;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
@@ -62,6 +65,24 @@ public class ProjectListFragment extends BaseFragment<ProjectListPresenter> impl
         mProjectListAdapter.setOnItemClickListener(((adapter, view, position) -> {
             startProjectDetailPager(view,position);
         }));
+        mProjectListAdapter.setOnItemChildClickListener(((adapter, view, position) -> clickChildEvent(view,position)));
+    }
+
+    private void clickChildEvent(View view, int position) {
+        switch (view.getId()){
+            case R.id.item_project_list_install:
+                startInstallPager(position);
+                break;
+        }
+    }
+
+    private void startInstallPager(int position) {
+        if (mProjectListAdapter.getData().size() <=0 || mProjectListAdapter.getData().size()<=position)
+            return;
+        String apkLink = mProjectListAdapter.getData().get(position).getApkLink();
+        if (!TextUtils.isEmpty(apkLink))
+            return;
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(apkLink)));
     }
 
     private void startProjectDetailPager(View view, int position) {
@@ -107,6 +128,11 @@ public class ProjectListFragment extends BaseFragment<ProjectListPresenter> impl
                 showToast(getString(R.string.load_more_no_data));
             }
         }
+    }
+
+    public void jumpToTheTop(){
+        if (mProjectListRecyclerView != null)
+            mProjectListRecyclerView.smoothScrollToPosition(0);
     }
 
 }

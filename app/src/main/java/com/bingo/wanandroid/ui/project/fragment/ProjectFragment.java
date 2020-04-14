@@ -34,7 +34,7 @@ public class ProjectFragment extends BaseFragment<ProjectPresenter> implements P
     @BindView(R.id.refresh_layout)
     LinearLayout mRefreshLayout;
 
-    private List<BaseFragment> mFragments;
+    private List<ProjectListFragment> mFragments;
     private int mCurrentPage;
 
     public static ProjectFragment newInstance(String param1, String param2) {
@@ -78,8 +78,7 @@ public class ProjectFragment extends BaseFragment<ProjectPresenter> implements P
     }
 
     private void initViewPagerAndTabLayout(List<ProjectClassifyData> datas) {
-        for (ProjectClassifyData data : datas
-             ) {
+        for (ProjectClassifyData data : datas) {
             ProjectListFragment projectListFragment = ProjectListFragment.newInstance(data.getId(), null);
             mFragments.add(projectListFragment);
         }
@@ -121,4 +120,9 @@ public class ProjectFragment extends BaseFragment<ProjectPresenter> implements P
     }
 
 
+    public void jumpToTheTop() {
+        // TODO: 2020/4/14 跳转到子fragment的顶端
+        if (mFragments != null)
+            mFragments.get(mCurrentPage).jumpToTheTop();
+    }
 }

@@ -104,4 +104,8 @@ public class HierarchyFragment extends BaseFragment<HierarchyPresenter> implemen
         }
     }
 
+    public void jumpToTheTop() {
+        if (mHierarchyRecyclerView != null)
+            mHierarchyRecyclerView.smoothScrollToPosition(0);
+    }
 }

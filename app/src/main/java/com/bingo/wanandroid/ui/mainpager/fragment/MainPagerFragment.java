@@ -232,4 +232,8 @@ public class MainPagerFragment extends BaseFragment<MainPagerPresenter> implemen
         RxBus.getDefault().post(new LoginEvent(false));
     }
 
+    public void jumpToTheTop() {
+        if (mMainPagerRecyclerView != null)
+            mMainPagerRecyclerView.smoothScrollToPosition(0);
+    }
 }

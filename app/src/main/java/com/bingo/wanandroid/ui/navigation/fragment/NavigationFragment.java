@@ -259,4 +259,8 @@ public class NavigationFragment extends BaseFragment<NavigationPresenter> implem
         }
     }
 
+    public void jumpToTheTop() {
+        if (mNavigationTabLayout != null)
+            mNavigationTabLayout.setTabSelected(0);
+    }
 }

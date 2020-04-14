@@ -1,13 +1,15 @@
 package com.bingo.wanandroid.ui.hierarchy.activity;
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
+import android.view.View;
 
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.app.Constants;
@@ -17,12 +19,14 @@ import com.bingo.wanandroid.contract.hierarchy.HierarchyDetailContract;
 import com.bingo.wanandroid.core.bean.hierarchy.HierarchyData;
 import com.bingo.wanandroid.presenter.hierarchy.HierarchyDetailPresenter;
 import com.bingo.wanandroid.ui.hierarchy.fragment.HierarchyDetailListFragment;
+import com.bingo.wanandroid.utils.StatusBarUtil;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -31,19 +35,18 @@ import butterknife.OnClick;
  */
 public class HierarchyDetailActivity extends BaseActivity<HierarchyDetailPresenter> implements HierarchyDetailContract.View {
 
-    @BindView(R.id.common_toolbar_title_tv)
-    TextView mCommonToolbarTitleTv;
-    @BindView(R.id.common_toolbar)
-    Toolbar mCommonToolbar;
     @BindView(R.id.hierarchy_detail_tab_layout)
     SlidingTabLayout mHierarchyDetailTabLayout;
     @BindView(R.id.hierarchy_detail_viewpager)
     ViewPager mHierarchyDetailViewpager;
     @BindView(R.id.hierarchy_floating_action_btn)
     FloatingActionButton mHierarchyFloatingActionBtn;
+    @BindView(R.id.hierarchy_detail_toolbar)
+    Toolbar mHierarchyDetailToolbar;
 
     private List<BaseFragment> mFragments;
     private List<HierarchyData.HierarchyChildren> mChildren;
+    private int mCurrentPage;
 
     @Override
     protected int getLayoutId() {
@@ -52,12 +55,12 @@ public class HierarchyDetailActivity extends BaseActivity<HierarchyDetailPresent
 
     @Override
     protected void initToolbar() {
-        setSupportActionBar(mCommonToolbar);
+        setSupportActionBar(mHierarchyDetailToolbar);
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayShowTitleEnabled(false);
-        //StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this,R.color.blue_dark_btn),1f);
-        mCommonToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
+        StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this,R.color.main_status_bar_blue),1f);
+        mHierarchyDetailToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
         mFragments = new ArrayList<>();
         startNormalHierarchyListPager();
     }
@@ -69,7 +72,7 @@ public class HierarchyDetailActivity extends BaseActivity<HierarchyDetailPresent
         HierarchyData hierarchyData = (HierarchyData) getIntent().getSerializableExtra(Constants.PARAM1);
         if (hierarchyData == null || hierarchyData.getName() == null)
             return;
-        mCommonToolbarTitleTv.setText(hierarchyData.getName().trim());
+        mHierarchyDetailToolbar.setTitle(hierarchyData.getName().trim());
         mChildren = hierarchyData.getChildren();
         if (mChildren == null)
             return;
@@ -101,13 +104,30 @@ public class HierarchyDetailActivity extends BaseActivity<HierarchyDetailPresent
                 return mChildren.get(position).getName();
             }
         });
+        mHierarchyDetailViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                mCurrentPage = i;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
         mHierarchyDetailTabLayout.setViewPager(mHierarchyDetailViewpager);
         mHierarchyDetailViewpager.setCurrentItem(0);
     }
 
     @OnClick({R.id.hierarchy_floating_action_btn})
-    public void onViewClicked() {
+    public void onViewClicked(View view) {
         //activity内点击,相应的在某个fragment滑至顶部
-
+        ((HierarchyDetailListFragment) mFragments.get(mCurrentPage)).jumpToTheTop();
     }
+
 }
