@@ -2,6 +2,7 @@ package com.bingo.wanandroid.base.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 import com.bingo.wanandroid.component.ActivityControl;
 
 import butterknife.ButterKnife;

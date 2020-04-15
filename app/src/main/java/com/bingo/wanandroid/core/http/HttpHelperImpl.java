@@ -58,8 +58,8 @@ public class HttpHelperImpl implements HttpHelper {
     }
 
     @Override
-    public Observable<BaseResponse<List<UsefulSiteData>>> getUsefulSitesData() {
-        return mWanAndroidApis.getUsefulSitesData();
+    public Observable<BaseResponse<List<UsefulSiteData>>> getUsefulSiteData() {
+        return mWanAndroidApis.getUsefulSiteData();
     }
 
     @Override

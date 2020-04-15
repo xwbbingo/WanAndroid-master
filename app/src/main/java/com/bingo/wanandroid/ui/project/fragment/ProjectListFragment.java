@@ -4,6 +4,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -88,9 +89,9 @@ public class ProjectListFragment extends BaseFragment<ProjectListPresenter> impl
     private void startProjectDetailPager(View view, int position) {
         if(mProjectListAdapter.getData().size() <= 0 || mProjectListAdapter.getData().size() <= position)
             return;
-        ActivityOptions options =  ActivityOptions.makeSceneTransitionAnimation(_mActivity,view,getString(R.string.share_view));
+        ActivityOptionsCompat compat =  ActivityOptionsCompat.makeSceneTransitionAnimation(_mActivity,view,getString(R.string.share_view));
         JudgeUtils.startArticleDetailActivity(_mActivity,
-                options,
+                compat,
                 mProjectListAdapter.getData().get(position).getId(),
                 mProjectListAdapter.getData().get(position).getTitle(),
                 mProjectListAdapter.getData().get(position).getLink()
@@ -115,7 +116,6 @@ public class ProjectListFragment extends BaseFragment<ProjectListPresenter> impl
 
     @Override
     public void showProjectList(ProjectListData projectListData, boolean isRefresh) {
-        Log.i("test",projectListData.getSize() + "  " + isRefresh);
         if (mProjectListAdapter == null)
             return;
         List<FeedArticleData> datas = projectListData.getDatas();

@@ -10,6 +10,8 @@
         <!-- Set menu background and text color -->
         <item name="android:itemBackground">@color/white</item>
         <item name="android:textColor">@color/title_black</item>
+        <!-- ActivityOptions 过度动画需要指定 -->
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -80,6 +82,24 @@
     <style name="DialogEmptyAnimation" parent="android:Animation">
         <item name="android:windowEnterAnimation">@null</item>
         <item name="android:windowExitAnimation">@null</item>
+    </style>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabMaxWidth">@dimen/dp_200</item>
+        <item name="tabIndicatorColor">@color/deep_red</item>
+        <item name="tabIndicatorHeight">@dimen/dp_1</item>
+        <item name="tabPaddingStart">@dimen/dp_12</item>
+        <item name="tabPaddingEnd">@dimen/dp_12</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/light_deep_red</item>
+        <item name="tabMode">scrollable</item>
+    </style>
+
+    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="textAllCaps">true</item>
     </style>
 
 </resources>

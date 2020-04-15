@@ -1,6 +1,8 @@
 package com.bingo.wanandroid.ui.main.activity;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.KeyEvent;
@@ -15,6 +17,7 @@ import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.base.activity.BaseActivity;
 import com.bingo.wanandroid.contract.main.ArticleDetailContract;
 import com.bingo.wanandroid.presenter.main.ArticleDetailPresenter;
+import com.bingo.wanandroid.utils.StatusBarUtil;
 import com.just.agentweb.AgentWeb;
 
 import butterknife.BindView;
@@ -47,13 +50,13 @@ public class ArticleDetailActivity extends BaseActivity<ArticleDetailPresenter>
     @Override
     protected void initToolbar() {
         getBundleData();
-        mArticleDetailToolbar.setTitle(Html.fromHtml(mTitle));
         setSupportActionBar(mArticleDetailToolbar);
-//        ActionBar actionBar = getSupportActionBar();
-//        assert actionBar != null;
-//        actionBar.setDisplayShowTitleEnabled(false);
-        //StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this,R.color.blue_dark_btn),1f);
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayShowTitleEnabled(false);
+        StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this,R.color.main_status_bar_blue),1f);
         mArticleDetailToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
+        mArticleDetailToolbar.setTitle(Html.fromHtml(mTitle));
     }
 
     private void getBundleData() {

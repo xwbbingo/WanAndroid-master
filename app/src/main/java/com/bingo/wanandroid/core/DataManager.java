@@ -58,8 +58,8 @@ public class DataManager implements HttpHelper, PreferenceHelper {
     }
 
     @Override
-    public Observable<BaseResponse<List<UsefulSiteData>>> getUsefulSitesData() {
-        return mHttpHelper.getUsefulSitesData();
+    public Observable<BaseResponse<List<UsefulSiteData>>> getUsefulSiteData() {
+        return mHttpHelper.getUsefulSiteData();
     }
 
     @Override

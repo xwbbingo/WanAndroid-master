@@ -86,7 +86,7 @@ public interface WanAndroidApis {
      * @return 常用网站数据
      */
     @GET("friend/json")
-    Observable<BaseResponse<List<UsefulSiteData>>> getUsefulSitesData();
+    Observable<BaseResponse<List<UsefulSiteData>>> getUsefulSiteData();
 
     /**
      * 热搜

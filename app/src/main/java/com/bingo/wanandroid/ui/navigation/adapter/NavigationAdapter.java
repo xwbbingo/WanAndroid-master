@@ -1,6 +1,7 @@
 package com.bingo.wanandroid.ui.navigation.adapter;
 
 import android.app.ActivityOptions;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,13 +65,13 @@ public class NavigationAdapter extends BaseQuickAdapter<NavigationData, Navigati
     }
 
     private void startNavigationDetailPager(View view, int position, FlowLayout parent, List<FeedArticleData> articles) {
-        ActivityOptions options = ActivityOptions.makeScaleUpAnimation(view,
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeScaleUpAnimation(view,
                 view.getWidth() / 2,
                 view.getHeight() / 2,
                 0,
                 0);
         JudgeUtils.startArticleDetailActivity(parent.getContext(),
-                options,
+                compat,
                 articles.get(position).getId(),
                 articles.get(position).getTitle(),
                 articles.get(position).getLink());

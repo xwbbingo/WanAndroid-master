@@ -3,6 +3,7 @@ package com.bingo.wanandroid.di.module;
 import com.bingo.wanandroid.di.component.BaseDialogFragmentComponent;
 import com.bingo.wanandroid.di.component.BaseFragmentComponent;
 import com.bingo.wanandroid.ui.main.fragment.HotSearchDialogFragment;
+import com.bingo.wanandroid.ui.main.fragment.UsefulSiteDialogFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -18,5 +19,6 @@ public abstract class AbstractAllDialogFragmentModule {
     @ContributesAndroidInjector(modules = HotSearchDialogFragmentModule.class)
     abstract HotSearchDialogFragment contributesHotSearchDialogFragmentInjector();
 
-
+    @ContributesAndroidInjector(modules = UsefulSiteDialogFragmentModule.class)
+    abstract UsefulSiteDialogFragment contributesUsefulSiteDialogFragmentInjector();
 }

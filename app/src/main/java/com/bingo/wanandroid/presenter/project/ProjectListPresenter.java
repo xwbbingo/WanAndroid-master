@@ -51,7 +51,6 @@ public class ProjectListPresenter extends BasePresenter<ProjectListContract.View
     public void loadMoreData(int cid) {
         mCurrentPage++;
         isRefresh = false;
-        Log.i("test","cid:" + cid + "  " + mCurrentPage);
         getProjectList(cid, false);
     }
 

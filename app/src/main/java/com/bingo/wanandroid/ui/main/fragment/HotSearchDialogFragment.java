@@ -132,12 +132,9 @@ public class HotSearchDialogFragment extends BaseDialogFragment<HotSearchPresent
                 return tv;
             }
         });
-        mHotSearchFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
-            @Override
-            public boolean onTagClick(View view, int position, FlowLayout parent) {
-                JudgeUtils.startSearchListActivity(getActivity(), hotSearchDataList.get(position).getName().trim());
-                return false;
-            }
+        mHotSearchFlowLayout.setOnTagClickListener((view, position, parent) -> {
+            JudgeUtils.startSearchListActivity(getActivity(), hotSearchDataList.get(position).getName().trim());
+            return false;
         });
     }
 

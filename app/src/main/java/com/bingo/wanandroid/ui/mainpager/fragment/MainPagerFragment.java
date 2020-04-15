@@ -2,6 +2,7 @@ package com.bingo.wanandroid.ui.mainpager.fragment;
 
 import android.app.ActivityOptions;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -122,9 +123,9 @@ public class MainPagerFragment extends BaseFragment<MainPagerPresenter> implemen
     private void startArticleDetailPager(View view, int position) {
         if (mAdapter.getData().size() <= 0 || mAdapter.getData().size() < position)
             return;
-        ActivityOptions options =  ActivityOptions.makeSceneTransitionAnimation(_mActivity,view,getString(R.string.share_view));
+        ActivityOptionsCompat compat =  ActivityOptionsCompat.makeSceneTransitionAnimation(_mActivity,view,getString(R.string.share_view));
         JudgeUtils.startArticleDetailActivity(_mActivity,
-                options,
+                compat,
                 mAdapter.getData().get(position).getId(),
                 mAdapter.getData().get(position).getTitle(),
                 mAdapter.getData().get(position).getLink()

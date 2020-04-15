@@ -27,6 +27,7 @@ import com.bingo.wanandroid.contract.main.MainContract;
 import com.bingo.wanandroid.presenter.main.MainPresenter;
 import com.bingo.wanandroid.ui.hierarchy.fragment.HierarchyFragment;
 import com.bingo.wanandroid.ui.main.fragment.HotSearchDialogFragment;
+import com.bingo.wanandroid.ui.main.fragment.UsefulSiteDialogFragment;
 import com.bingo.wanandroid.ui.mainpager.fragment.MainPagerFragment;
 import com.bingo.wanandroid.ui.navigation.fragment.NavigationFragment;
 import com.bingo.wanandroid.ui.project.fragment.ProjectFragment;
@@ -75,6 +76,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     private boolean mAboutType;
     private HotSearchDialogFragment mHotSearchDialogFragment;
+    private UsefulSiteDialogFragment mUsefulSiteDialogFragment;
 
     @Override
     protected int getLayoutId() {
@@ -83,26 +85,22 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected void initToolbar() {
-        Log.i("test","10");
         setSupportActionBar(mCommonToolbar);
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayShowTitleEnabled(false);
-        mCommonToolbarTitleTv.setText(getString(R.string.home_pager));
         StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this, R.color.main_status_bar_blue), 1f);
         mCommonToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
+        mCommonToolbarTitleTv.setText(getString(R.string.home_pager));
     }
 
     @Override
     protected void initEventAndData() {
-        Log.i("test","9");
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i("test","6");
         super.onCreate(savedInstanceState);
-        Log.i("test","7");
         mFragments = new ArrayList<>();
         if (savedInstanceState == null) {
             initPager(false, Constants.TYPE_MAIN_PAGER);
@@ -298,11 +296,18 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_usage:
-                // TODO: 2020/4/7 常用网站
+                // 常用网站
+                if (mUsefulSiteDialogFragment == null){
+                    mUsefulSiteDialogFragment = new UsefulSiteDialogFragment();
+                }
+                if (!isDestroyed() && mUsefulSiteDialogFragment.isAdded()){
+                    mUsefulSiteDialogFragment.dismiss();
+                }
+                mUsefulSiteDialogFragment.show(getSupportFragmentManager(),"UsefulSiteDialogFragment");
                 break;
             case R.id.action_search:
-                // TODO: 2020/4/7 热搜
-                if (mHotSearchDialogFragment ==null){
+                // 热搜
+                if (mHotSearchDialogFragment == null){
                     mHotSearchDialogFragment = new HotSearchDialogFragment();
                 }
                 if (!isDestroyed() && mHotSearchDialogFragment.isAdded()){

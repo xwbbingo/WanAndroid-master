@@ -2,6 +2,7 @@ package com.bingo.wanandroid.ui.hierarchy.fragment;
 
 import android.app.ActivityOptions;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -83,9 +84,9 @@ public class HierarchyDetailListFragment extends BaseFragment<HierarchyDetailLis
     }
 
     private void startArticleDetailPager(View view, int position) {
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(_mActivity, view, getString(R.string.share_view));
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(_mActivity, view, getString(R.string.share_view));
         JudgeUtils.startArticleDetailActivity(_mActivity,
-                options,
+                compat,
                 mFeedArticleAdapter.getData().get(position).getId(),
                 mFeedArticleAdapter.getData().get(position).getTitle(),
                 mFeedArticleAdapter.getData().get(position).getLink()
@@ -111,7 +112,6 @@ public class HierarchyDetailListFragment extends BaseFragment<HierarchyDetailLis
 
     @Override
     public void showHierarchyDetailList(FeedArticleListData feedArticleListData, boolean isRefresh) {
-        Log.i("test", feedArticleListData.getSize() + "  " + isRefresh);
         if (mFeedArticleAdapter == null)
             return;
         List<FeedArticleData> datas = feedArticleListData.getDatas();

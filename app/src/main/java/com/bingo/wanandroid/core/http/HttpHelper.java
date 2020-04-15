@@ -77,7 +77,7 @@ public interface HttpHelper {
      *
      * @return 常用网站数据
      */
-    Observable<BaseResponse<List<UsefulSiteData>>> getUsefulSitesData();
+    Observable<BaseResponse<List<UsefulSiteData>>> getUsefulSiteData();
 
     /**
      * 热搜
