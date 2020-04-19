@@ -45,6 +45,8 @@ public class Constants {
     public static final String LOGIN_ACCOUNT = "login_account";
     public static final String LOGIN_PASSWORD = "login_password";
     public static final String CURRENT_PAGE = "current_page";
+    public static final String AUTO_CACHE_STATE = "auto_cache_state";
+    public static final String NO_IMAGE_STATE = "no_image_state";
 
     /**
      * Main Pager

@@ -53,7 +53,6 @@ public interface HttpHelper {
     Observable<BaseResponse<LoginData>> logoutWanAndroid();
 
     //首页相关
-
     /**
      * 首页文章列表
      * https://www.wanandroid.com/article/list/0/json
@@ -71,6 +70,7 @@ public interface HttpHelper {
      */
     Observable<BaseResponse<List<BannerData>>> getBannerData();
 
+    //常用网站
     /**
      * 常用网站
      * http://www.wanandroid.com/friend/json
@@ -79,6 +79,7 @@ public interface HttpHelper {
      */
     Observable<BaseResponse<List<UsefulSiteData>>> getUsefulSiteData();
 
+    //热搜
     /**
      * 热搜
      * http://www.wanandroid.com/hotkey/json
@@ -95,6 +96,7 @@ public interface HttpHelper {
      */
     Observable<BaseResponse<List<FeedArticleData>>> getTopArticleData();
 
+    //搜索
     /**
      * 搜索文章列表
      * https://www.wanandroid.com/article/query/0/json
@@ -142,6 +144,7 @@ public interface HttpHelper {
      */
     Observable<BaseResponse<List<NavigationData>>> getNavigationData();
 
+    //项目
     /**
      * 项目分类
      * https://www.wanandroid.com/project/tree/json

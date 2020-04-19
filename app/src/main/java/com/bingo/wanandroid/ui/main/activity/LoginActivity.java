@@ -11,6 +11,7 @@ import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.base.activity.BaseActivity;
 import com.bingo.wanandroid.contract.main.LoginContract;
 import com.bingo.wanandroid.presenter.main.LoginPresenter;
+import com.bingo.wanandroid.utils.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,8 +41,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     protected void initToolbar() {
-//        StatusBarUtil.immersive(this);
-//        StatusBarUtil.setPaddingSmart(this, mLoginToolbar);
+        setSupportActionBar(mLoginToolbar);
+        StatusBarUtil.immersive(this);
+        StatusBarUtil.setPaddingSmart(this, mLoginToolbar);
         mLoginToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
     }
 

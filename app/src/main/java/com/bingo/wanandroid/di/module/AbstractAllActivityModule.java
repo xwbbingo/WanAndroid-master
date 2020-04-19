@@ -6,6 +6,7 @@ import com.bingo.wanandroid.ui.main.activity.ArticleDetailActivity;
 import com.bingo.wanandroid.ui.main.activity.LoginActivity;
 import com.bingo.wanandroid.ui.main.activity.MainActivity;
 import com.bingo.wanandroid.ui.main.activity.RegisterActivity;
+import com.bingo.wanandroid.ui.main.activity.SettingActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -32,5 +33,8 @@ public abstract class AbstractAllActivityModule {
 
     @ContributesAndroidInjector(modules = ArticleDetailActivityModule.class)
     abstract ArticleDetailActivity contributesArticleDetailActivityInjector();
+
+    @ContributesAndroidInjector(modules = SettingActivityModule.class)
+    abstract SettingActivity contributeSettingActivityInjector();
 
 }

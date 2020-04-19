@@ -28,8 +28,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
     @BindView(R.id.register_toolbar)
     Toolbar mRegisterToolbar;
-    @BindView(R.id.register_toolbar_title_tv)
-    TextView mRegisterToolbarTitleTv;
     @BindView(R.id.register_password_edit)
     EditText mRegisterPasswordEdit;
     @BindView(R.id.register_account_edit)
@@ -47,12 +45,9 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
     @Override
     protected void initToolbar() {
+        setSupportActionBar(mRegisterToolbar);
         StatusBarUtil.immersive(this);
         StatusBarUtil.setPaddingSmart(this, mRegisterToolbar);
-        mRegisterToolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.register_bac));
-        mRegisterToolbarTitleTv.setText(R.string.register);
-        mRegisterToolbarTitleTv.setTextColor(ContextCompat.getColor(this, R.color.white));
-        mRegisterToolbarTitleTv.setTextSize(20);
         mRegisterToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
     }
 

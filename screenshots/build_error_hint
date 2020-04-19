@@ -1,0 +1,5 @@
+1.ToolBar问题
+设置setTitle()无效,需要设置如下
+ActionBar actionBar = getSupportActionBar();
+assert actionBar != null;
+actionBar.setDisplayShowTitleEnabled(false);

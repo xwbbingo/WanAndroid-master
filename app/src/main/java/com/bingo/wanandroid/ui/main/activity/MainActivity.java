@@ -200,7 +200,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             } else if (menuItem == mMenuItem2) { //收藏
                 showSnackBar("功能待开发中...");
             } else if (menuItem == mMenuItem3) { //设置
-                showSnackBar("功能待开发中...");
+                startActivity(new Intent(this,SettingActivity.class));
             } else if (menuItem == mMenuItem4) { //关于
                 mAboutType = !mAboutType;
                 startActivity(new Intent(this,mAboutType?AboutMeActivity.class:AboutUsActivity.class));

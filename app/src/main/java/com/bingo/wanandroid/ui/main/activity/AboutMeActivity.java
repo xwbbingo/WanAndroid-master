@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.base.activity.AbstractActivity;
+import com.bingo.wanandroid.utils.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,8 +47,8 @@ public class AboutMeActivity extends AbstractActivity {
     @Override
     protected void initToolbar() {
         setSupportActionBar(mAboutMeToolbar);
-        //StatusBarUtil.immersive(this);
-        //StatusBarUtil.setPaddingSmart(this,mAboutUsToolbar);
+        StatusBarUtil.immersive(this);
+        StatusBarUtil.setPaddingSmart(this,mAboutMeToolbar);
         mAboutMeToolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
     }
 
