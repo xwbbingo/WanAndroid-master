@@ -15,13 +15,5 @@ public interface SettingContract {
 
     interface Presenter extends AbstractPresenter<View>{
 
-        boolean getAutoCacheState();
-
-        void setAutoCacheState(boolean b);
-
-        boolean getNoImageState();
-
-        void setNoImageState(boolean b);
-
     }
 }

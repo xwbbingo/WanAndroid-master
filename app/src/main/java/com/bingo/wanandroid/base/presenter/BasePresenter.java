@@ -84,6 +84,26 @@ public class BasePresenter<T extends AbstractView> implements AbstractPresenter<
     }
 
     @Override
+    public void setAutoCacheState(boolean b) {
+        mDataManager.setAutoCacheState(b);
+    }
+
+    @Override
+    public boolean getAutoCacheState() {
+        return mDataManager.getAutoCacheState();
+    }
+
+    @Override
+    public void setNoImageState(boolean b) {
+        mDataManager.setNoImageState(b);
+    }
+
+    @Override
+    public boolean getNoImageState() {
+        return mDataManager.getNoImageState();
+    }
+
+    @Override
     public void addRxBindingSubscribe(Disposable disposable) {
         addSubscribe(disposable);
     }

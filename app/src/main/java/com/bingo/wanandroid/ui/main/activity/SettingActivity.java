@@ -1,26 +1,28 @@
 package com.bingo.wanandroid.ui.main.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bingo.wanandroid.R;
+import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.base.activity.BaseActivity;
+import com.bingo.wanandroid.component.ACache;
 import com.bingo.wanandroid.contract.main.SettingContract;
 import com.bingo.wanandroid.presenter.main.SettingPresenter;
+import com.bingo.wanandroid.utils.ShareUtil;
 import com.bingo.wanandroid.utils.StatusBarUtil;
 
+import java.io.File;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
+ * 缓存模式、无图模式用于 WebView.
  * author bingo
  * date 2020/4/16
  */
@@ -41,6 +43,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
     @BindView(R.id.ll_setting_clear)
     LinearLayout mLlSettingClear;
 
+    private File cacheFile;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_setting;
@@ -56,7 +60,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
 
     @Override
     protected void initEventAndData() {
-
+        cacheFile = new File(Constants.PATH_CACHE);
+        mTvSettingClear.setText(ACache.getCacheSize(cacheFile));
         mCbSettingCache.setChecked(mPresenter.getAutoCacheState());
         mCbSettingImage.setChecked(mPresenter.getNoImageState());
         mCbSettingNight.setChecked(mPresenter.getNightModeState());
@@ -87,10 +92,11 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_setting_feedback:
-
+                ShareUtil.shareEmail(this, getString(R.string.send_email));
                 break;
             case R.id.ll_setting_clear:
-
+                ACache.deleteDir(cacheFile);
+                mTvSettingClear.setText(ACache.getCacheSize(cacheFile));
                 break;
         }
     }

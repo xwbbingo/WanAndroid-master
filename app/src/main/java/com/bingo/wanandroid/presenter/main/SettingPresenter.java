@@ -17,24 +17,4 @@ public class SettingPresenter extends BasePresenter<SettingContract.View> implem
         super(dataManager);
     }
 
-
-    @Override
-    public boolean getAutoCacheState() {
-        return mDataManager.getAutoCacheState();
-    }
-
-    @Override
-    public void setAutoCacheState(boolean b) {
-        mDataManager.setAutoCacheState(b);
-    }
-
-    @Override
-    public boolean getNoImageState() {
-        return mDataManager.getNoImageState();
-    }
-
-    @Override
-    public void setNoImageState(boolean b) {
-        mDataManager.setNoImageState(b);
-    }
 }

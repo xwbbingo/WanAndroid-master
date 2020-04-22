@@ -90,6 +90,31 @@ public interface AbstractPresenter<T> {
      */
     int getCurrentPage();
 
+
+    /**
+     * Set auto cache state
+     * @param b current auto cache state
+     */
+    void setAutoCacheState(boolean b);
+
+    /**
+     * Get auto cache state
+     * @return if auto cache state
+     */
+    boolean getAutoCacheState();
+
+    /**
+     * Set no image state
+     * @param b current no image state
+     */
+    void setNoImageState(boolean b);
+
+    /**
+     * Get no image state
+     * @return if has image state
+     */
+    boolean getNoImageState();
+
     /**
      * Add rxBing subscribe manager
      *
