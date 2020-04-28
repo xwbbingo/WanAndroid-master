@@ -6,16 +6,28 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
+        <item name="android:windowAnimationStyle">@style/windowAnimation</item>
         <!-- Set menu background and text color -->
         <item name="android:itemBackground">@color/white</item>
         <item name="android:textColor">@color/title_black</item>
         <!-- ActivityOptions 过度动画需要指定 -->
         <item name="android:windowContentTransitions">true</item>
 
+        <!-- 沉浸状态栏 只有不透明的全屏activity可以自主设置界面方向
+        因此将windowIsTranslucent改为windowDisablePreview -->
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <!-- 沉浸状态栏 -->
 <!--        <item name="android:windowIsTranslucent">true</item>-->
 <!--        <item name="android:windowTranslucentStatus">true</item>-->
+    </style>
+
+    <style name="windowAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/push_left_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/push_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/push_right_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/push_right_out</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

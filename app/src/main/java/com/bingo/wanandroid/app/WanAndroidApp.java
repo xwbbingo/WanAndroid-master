@@ -20,11 +20,13 @@ import dagger.android.HasActivityInjector;
  */
 public class WanAndroidApp extends Application implements HasActivityInjector {
 
+
     @Inject
     DispatchingAndroidInjector<Activity> mDispatchingAndroidInjector;
 
     private static WanAndroidApp instance;
     private static volatile AppComponent appComponent;
+    public static boolean isFirstRun = true;
 
     public static synchronized WanAndroidApp getInstance() {
         return instance;

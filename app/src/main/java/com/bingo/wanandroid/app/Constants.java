@@ -62,6 +62,8 @@ public class Constants {
 
     public static final String ARTICLE_DATA = "article_data";
 
+    public static final String MENU_BUILDER = "MenuBuilder";
+
     /**
      * Params    Activity -> Fragment
      */

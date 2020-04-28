@@ -1,5 +1,6 @@
 package com.bingo.wanandroid.ui.main.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ import com.bingo.wanandroid.utils.CommonUtil;
 import com.bingo.wanandroid.utils.NetWorkUtil;
 import com.bingo.wanandroid.utils.StatusBarUtil;
 import com.just.agentweb.AgentWeb;
+
+import java.lang.reflect.Method;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -147,6 +150,39 @@ public class ArticleDetailActivity extends BaseActivity<ArticleDetailPresenter>
             return true;
         return super.onKeyDown(keyCode, event);
     }
+
+//    /**
+//     * 让菜单同时显示图标和文字
+//     *
+//     * @param featureId Feature id
+//     * @param menu Menu
+//     * @return menu if opened
+//     */
+//    @Override
+//    public boolean onMenuOpened(int featureId, Menu menu) {
+//        if (menu != null) {
+//            if (Constants.MENU_BUILDER.equalsIgnoreCase(menu.getClass().getSimpleName())){
+//                try {
+//                    @SuppressLint("PrivateApi")
+//                    Method method = menu.getClass().getDeclaredMethod("setOptionalIconsVisible", Boolean.TYPE);
+//                    method.setAccessible(true);
+//                    method.invoke(menu,true);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//        return super.onMenuOpened(featureId, menu);
+//    }
+
+//    @Override
+//    public void onBackPressedSupport() {
+//        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+//            pop();
+//        } else {
+//            supportFinishAfterTransition();
+//        }
+//    }
 
     //跟随 Activity Or Fragment 生命周期 ， 释放 CPU 更省电
     @Override

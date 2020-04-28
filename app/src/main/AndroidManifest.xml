@@ -12,7 +12,8 @@
 
     <application
         android:name=".app.WanAndroidApp"
-        android:allowBackup="true"
+        tools:replace="android:allowBackup"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/wan_android"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -20,13 +21,17 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.main.activity.MainActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask">
+        <activity android:name=".ui.main.activity.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.main.activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
         </activity>
 
         <activity android:name=".ui.main.activity.LoginActivity"
@@ -63,7 +68,6 @@
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:exported="false"/>
-
 
 
     </application>

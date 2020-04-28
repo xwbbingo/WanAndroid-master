@@ -58,7 +58,7 @@ public class AboutMeActivity extends AbstractActivity {
     }
 
     private void showAboutContent() {
-        mAboutContent.setText(Html.fromHtml(getString(R.string.about_content)));
+        mAboutContent.setText(Html.fromHtml(getString(R.string.about_me_content)));
         mAboutContent.setMovementMethod(LinkMovementMethod.getInstance());
         try {
             String versionStr = getString(R.string.wan_android)

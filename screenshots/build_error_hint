@@ -1,5 +1,15 @@
 1.ToolBar问题
-设置setTitle()无效,需要设置如下
+设置setTitle()无效.
+解决如下
 ActionBar actionBar = getSupportActionBar();
 assert actionBar != null;
 actionBar.setDisplayShowTitleEnabled(false);
+
+2.app启动时白屏问题
+应用启动异常java.lang.IllegalStateException:
+Only fullscreen opaque activities can request orientation
+解决如下
+<!-- 沉浸状态栏 只有全屏不透明activity可以自主设置界面方向
+因此将windowIsTranslucent改为windowDisablePreview -->
+<item name="android:windowDisablePreview">true</item>
+<item name="android:windowTranslucentStatus">true</item>
