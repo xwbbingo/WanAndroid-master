@@ -17,9 +17,8 @@
         因此将windowIsTranslucent改为windowDisablePreview -->
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowIsTranslucent">false</item>
         <!-- 沉浸状态栏 -->
-<!--        <item name="android:windowIsTranslucent">true</item>-->
+<!--        <item name="android:windowIsTranslucent">true</item> tre-->
 <!--        <item name="android:windowTranslucentStatus">true</item>-->
     </style>
 

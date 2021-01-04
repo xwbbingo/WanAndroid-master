@@ -57,7 +57,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<T> {
         } else if (e instanceof ServerException) {
             mView.showErrorMsg(e.toString());
         } else if (e instanceof HttpException) {
-                mView.showErrorMsg(WanAndroidApp.getInstance().getString(R.string.http_error));
+            mView.showErrorMsg(WanAndroidApp.getInstance().getString(R.string.http_error));
         } else {
             mView.showErrorMsg(WanAndroidApp.getInstance().getString(R.string.unKnown_error));
         }

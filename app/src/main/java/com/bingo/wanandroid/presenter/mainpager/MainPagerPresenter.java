@@ -25,6 +25,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.functions.Function3;
 import io.reactivex.functions.Function4;
 
 /**
@@ -45,35 +46,25 @@ public class MainPagerPresenter extends BasePresenter<MainPagerContract.View> im
 
     @Override
     public void loadMainPagerData() {
-        Observable<BaseResponse<LoginData>> loginDataObservable = mDataManager.getLoginData(getLoginAccount(), getLoginPassword());
         Observable<BaseResponse<List<BannerData>>> mBannerListObservable = mDataManager.getBannerData();
         Observable<BaseResponse<List<FeedArticleData>>> mTopArticleListObservable = mDataManager.getTopArticleData();
         Observable<BaseResponse<FeedArticleListData>> mFeedArticleListObservable = mDataManager.getFeedArticleList(mCurrentPage);
-        addSubscribe(Observable.zip(loginDataObservable, mBannerListObservable,
+        addSubscribe(Observable.zip( mBannerListObservable,
                 mTopArticleListObservable, mFeedArticleListObservable,
-                new Function4<BaseResponse<LoginData>,
-                        BaseResponse<List<BannerData>>,
-                        BaseResponse<List<FeedArticleData>>,
-                        BaseResponse<FeedArticleListData>, HashMap<String, Object>>() {
+                new Function3<BaseResponse<List<BannerData>>,
+                                        BaseResponse<List<FeedArticleData>>,
+                                        BaseResponse<FeedArticleListData>, HashMap<String, Object>>() {
                     @Override
-                    public HashMap<String, Object> apply(BaseResponse<LoginData> loginResponse,
-                                                         BaseResponse<List<BannerData>> bannerResponse,
+                    public HashMap<String, Object> apply(BaseResponse<List<BannerData>> bannerResponse,
                                                          BaseResponse<List<FeedArticleData>> topArticleResponse,
                                                          BaseResponse<FeedArticleListData> feedArticleListResponse) throws Exception {
-                        return MainPagerPresenter.this.createResponseMap(loginResponse, bannerResponse, topArticleResponse, feedArticleListResponse);
+                        return MainPagerPresenter.this.createResponseMap(bannerResponse, topArticleResponse, feedArticleListResponse);
                     }
                 })
                 .compose(RxUtils.rxSchedulerHelper())
                 .subscribeWith(new BaseObserver<HashMap<String, Object>>(mView) {
                     @Override
                     public void onNext(HashMap<String, Object> map) {
-                        BaseResponse<LoginData> loginResponse = CommonUtil.cast(map.get(Constants.LOGIN_DATA));
-                        if (loginResponse.getErrorCode() == BaseResponse.SUCCESS) {
-                            loginSuccess(loginResponse);
-                        } else {
-                            setLoginStatus(false);
-                            mView.showAutoLoginFail();
-                        }
                         BaseResponse<List<BannerData>> bannerResponse = CommonUtil.cast(map.get(Constants.BANNER_DATA));
                         if (bannerResponse != null) {
                             mView.showBannerData(bannerResponse.getData());
@@ -94,6 +85,56 @@ public class MainPagerPresenter extends BasePresenter<MainPagerContract.View> im
                         mView.showAutoLoginFail();
                     }
                 }));
+
+//        Observable<BaseResponse<LoginData>> loginDataObservable = mDataManager.getLoginData(getLoginAccount(), getLoginPassword());
+//        Observable<BaseResponse<List<BannerData>>> mBannerListObservable = mDataManager.getBannerData();
+//        Observable<BaseResponse<List<FeedArticleData>>> mTopArticleListObservable = mDataManager.getTopArticleData();
+//        Observable<BaseResponse<FeedArticleListData>> mFeedArticleListObservable = mDataManager.getFeedArticleList(mCurrentPage);
+//        addSubscribe(Observable.zip(loginDataObservable, mBannerListObservable,
+//                mTopArticleListObservable, mFeedArticleListObservable,
+//                new Function4<BaseResponse<LoginData>,
+//                        BaseResponse<List<BannerData>>,
+//                        BaseResponse<List<FeedArticleData>>,
+//                        BaseResponse<FeedArticleListData>, HashMap<String, Object>>() {
+//                    @Override
+//                    public HashMap<String, Object> apply(BaseResponse<LoginData> loginResponse,
+//                                                         BaseResponse<List<BannerData>> bannerResponse,
+//                                                         BaseResponse<List<FeedArticleData>> topArticleResponse,
+//                                                         BaseResponse<FeedArticleListData> feedArticleListResponse) throws Exception {
+//                        return MainPagerPresenter.this.createResponseMap(loginResponse, bannerResponse, topArticleResponse, feedArticleListResponse);
+//                    }
+//                })
+//                .compose(RxUtils.rxSchedulerHelper())
+//                .subscribeWith(new BaseObserver<HashMap<String, Object>>(mView) {
+//                    @Override
+//                    public void onNext(HashMap<String, Object> map) {
+//                        BaseResponse<LoginData> loginResponse = CommonUtil.cast(map.get(Constants.LOGIN_DATA));
+//                        if (loginResponse.getErrorCode() == BaseResponse.SUCCESS) {
+//                            loginSuccess(loginResponse);
+//                        } else {
+//                            setLoginStatus(false);
+//                            mView.showAutoLoginFail();
+//                        }
+//                        BaseResponse<List<BannerData>> bannerResponse = CommonUtil.cast(map.get(Constants.BANNER_DATA));
+//                        if (bannerResponse != null) {
+//                            mView.showBannerData(bannerResponse.getData());
+//                        }
+//                        BaseResponse<List<FeedArticleData>> topResponse = CommonUtil.cast(map.get(Constants.TOP_DATA));
+//                        if (topResponse != null) {
+//                            mView.showTopArticleData(topResponse.getData());
+//                        }
+//                        BaseResponse<FeedArticleListData> feedArticleListResponse = CommonUtil.cast(map.get(Constants.ARTICLE_DATA));
+//                        if (feedArticleListResponse != null) {
+//                            mView.showFeedArticleList(feedArticleListResponse.getData(), isRefresh);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        super.onError(e);
+//                        mView.showAutoLoginFail();
+//                    }
+//                }));
     }
 
     private void loginSuccess(BaseResponse<LoginData> loginResponse) {
@@ -105,12 +146,10 @@ public class MainPagerPresenter extends BasePresenter<MainPagerContract.View> im
     }
 
     @NonNull
-    private HashMap<String, Object> createResponseMap(BaseResponse<LoginData> loginResponse,
-                                                      BaseResponse<List<BannerData>> bannerResponse,
+    private HashMap<String, Object> createResponseMap(BaseResponse<List<BannerData>> bannerResponse,
                                                       BaseResponse<List<FeedArticleData>> topArticleResponse,
                                                       BaseResponse<FeedArticleListData> feedArticleListResponse) {
         HashMap<String, Object> map = new HashMap<>();
-        map.put(Constants.LOGIN_DATA, loginResponse);
         map.put(Constants.BANNER_DATA, bannerResponse);
         map.put(Constants.TOP_DATA, topArticleResponse);
         map.put(Constants.ARTICLE_DATA, feedArticleListResponse);

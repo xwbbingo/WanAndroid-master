@@ -24,12 +24,27 @@ public interface MainContract {
         void showSwitchNavigation();
 
         /**
+         * show auto login success
+         */
+        void showAutoLoginSuccess();
+
+        /**
+         * show auto login fail
+         */
+        void showAutoLoginFail();
+
+        /**
          * Show logout success
          */
         void showLogoutSuccess();
     }
 
     interface Presenter extends AbstractPresenter<View> {
+
+        /**
+         * auto login
+         */
+        void autoLoginWanAndroid();
 
         /**
          * logout

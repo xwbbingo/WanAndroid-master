@@ -74,13 +74,6 @@ public interface PreferenceHelper {
     int getCurrentPage();
 
     /**
-     * Get auto cache state
-     *
-     * @return if auto cache state
-     */
-    boolean getAutoCacheState();
-
-    /**
      * Set auto cache state
      *
      * @param b current auto cache state
@@ -88,11 +81,11 @@ public interface PreferenceHelper {
     void setAutoCacheState(boolean b);
 
     /**
-     * Get no image state
+     * Get auto cache state
      *
-     * @return if has image state
+     * @return if auto cache state
      */
-    boolean getNoImageState();
+    boolean getAutoCacheState();
 
     /**
      * Set no image state
@@ -100,5 +93,12 @@ public interface PreferenceHelper {
      * @param b current no image state
      */
     void setNoImageState(boolean b);
+
+    /**
+     * Get no image state
+     *
+     * @return if has image state
+     */
+    boolean getNoImageState();
 
 }

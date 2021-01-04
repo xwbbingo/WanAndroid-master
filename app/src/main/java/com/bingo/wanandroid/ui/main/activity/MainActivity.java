@@ -23,7 +23,9 @@ import android.widget.TextView;
 import com.bingo.wanandroid.R;
 import com.bingo.wanandroid.app.Constants;
 import com.bingo.wanandroid.base.activity.BaseActivity;
+import com.bingo.wanandroid.component.RxBus;
 import com.bingo.wanandroid.contract.main.MainContract;
+import com.bingo.wanandroid.core.event.LoginEvent;
 import com.bingo.wanandroid.presenter.main.MainPresenter;
 import com.bingo.wanandroid.ui.hierarchy.fragment.HierarchyFragment;
 import com.bingo.wanandroid.ui.main.fragment.HotSearchDialogFragment;
@@ -116,6 +118,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
      * @param position
      */
     private void initPager(boolean isReCreate, int position) {
+        mPresenter.autoLoginWanAndroid();
         mMainPagerFragment = MainPagerFragment.newInstance(isReCreate, null);
         mFragments.add(mMainPagerFragment);
         initFragments();
@@ -334,6 +337,17 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public void showSwitchNavigation() {
 
+    }
+
+    @Override
+    public void showAutoLoginSuccess() {
+        showSnackBar(getString(R.string.auto_login_success));
+        RxBus.getDefault().post(new LoginEvent(true));
+    }
+
+    @Override
+    public void showAutoLoginFail() {
+        RxBus.getDefault().post(new LoginEvent(false));
     }
 
     /**
